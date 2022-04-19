@@ -327,7 +327,8 @@ class CarRacing(gym.Env, EzPickle):
                                      HARD_RIGHT, SOFT_STRAIGHT, HARD_STRAIGHT, SOFT_BREAK, 
                                      HARD_BREAK] 
 
-    min_step_reward (flt -inf)    To limit the min reward the agent can have in an episode, -np.inf means no limit
+    min_step_reward (flt -inf)    To limit the min reward the agent can have in an episode, -np.i
+    nf means no limit
                                      it is good to control the gradient
                                      Having max and min values for reward makes learning more stable (i.e. less 
                                      variance) but so far it does not make it learn faster
@@ -424,7 +425,7 @@ class CarRacing(gym.Env, EzPickle):
             random_obstacle_x_position=True,
             random_obstacle_shape=False,
             auto_render=False,
-            allow_outside=True,
+            allow_outside=False,
             load_tracks_from=None,
             ):
 
@@ -535,8 +536,9 @@ class CarRacing(gym.Env, EzPickle):
         return reward,done
 
     def _is_outside(self):
-        right = self.info['count_right'] > 0
-        left  = self.info['count_left']  > 0
+        right = self.info['count_right'] > 0.3
+        left  = self.info['count_left']  > 0.3
+
         if (left|right).sum() == 0:
             return True
         else:
