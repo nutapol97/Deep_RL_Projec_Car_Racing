@@ -145,7 +145,7 @@ def original_reward_callback(env):
         done = True
     else:
         if not env.allow_outside: reward,done = env.check_outside(reward,done)
-        #reward,done = env.check_timeout(reward,done)
+        reward,done = env.check_timeout(reward,done)
 
 
         if visited_count==len(env.track):
@@ -202,7 +202,7 @@ def default_reward_callback(env):
         done = True
     else:
         if not env.allow_outside: reward,done = env.check_outside(reward,done)
-        #reward,done = env.check_timeout(reward,done)
+        reward,done = env.check_timeout(reward,done)
         reward,done = env.check_unvisited_tiles(reward,done)
 
         # if outside the map
