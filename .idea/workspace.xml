@@ -4,10 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8883207b-38e7-4835-a3c5-6d079bad1bcc" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gym/envs/box2d/car_racing.py" beforeDir="false" afterPath="$PROJECT_DIR$/gym/envs/box2d/car_racing.py" afterDir="false" />
-    </list>
+    <list default="true" id="8883207b-38e7-4835-a3c5-6d079bad1bcc" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -41,7 +38,7 @@
       <option name="presentableId" value="Default" />
       <updated>1650384899999</updated>
       <workItem from="1650384902233" duration="3000" />
-      <workItem from="1650385063155" duration="3118000" />
+      <workItem from="1650385063155" duration="3328000" />
     </task>
     <servers />
   </component>
