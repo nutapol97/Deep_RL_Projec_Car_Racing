@@ -309,7 +309,7 @@ class CarRacing(gym.Env, EzPickle):
                                      playing time (runing this file) max_time_out is approximately 
                                      in seconds to allow you have a sense of the magnitude 
                                      This is not necessary time of not earning rewards, only time
-                                     outside the track or without moving
+                                     outside the track or without moving.
 
     grayscale          (bool 0)      Whether or not use grayscale for the state representation,
                                      the state will be 96x96 of values between 0,255 as rbg state
@@ -325,10 +325,10 @@ class CarRacing(gym.Env, EzPickle):
                                      - "hard" actions are 4 [NOTHING, LEFT, RIGHT, ACCELERATE, BREAK]
                                      - "soft" actions are 7 [NOTHING, SOFT_LEFT, HARD_LEFT, SOFT_RIGHT,
                                      HARD_RIGHT, SOFT_STRAIGHT, HARD_STRAIGHT, SOFT_BREAK, 
-                                     HARD_BREAK] 
+                                     HARD_BREAK]
 
-    min_step_reward (flt -inf)    To limit the min reward the agent can have in an episode, -np.i
-    nf means no limit
+    min_step_reward (flt -inf)    To limit the min reward the agent can have in an episode,
+                                    -np.inf means no limit
                                      it is good to control the gradient
                                      Having max and min values for reward makes learning more stable (i.e. less 
                                      variance) but so far it does not make it learn faster
@@ -425,7 +425,7 @@ class CarRacing(gym.Env, EzPickle):
             random_obstacle_x_position=True,
             random_obstacle_shape=False,
             auto_render=False,
-            allow_outside=False,
+            allow_outside=True,
             load_tracks_from=None,
             ):
 
@@ -526,8 +526,7 @@ class CarRacing(gym.Env, EzPickle):
         return reward,done
 
     def check_timeout(self,reward,done):
-        if self.t - self.last_touch_with_track > self.max_time_out and \
-                self.max_time_out > 0.0:
+        if self.t  > 5400:
             # if too many seconds outside the track
             done = True
             if self.verbose > 0:
