@@ -526,7 +526,7 @@ class CarRacing(gym.Env, EzPickle):
         return reward,done
 
     def check_timeout(self,reward,done):
-        if self.t  > 5400:
+        if self._steps_in_episode  >= 5400:
             # if too many seconds outside the track
             done = True
             if self.verbose > 0:
