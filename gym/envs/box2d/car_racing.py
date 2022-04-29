@@ -417,7 +417,7 @@ class CarRacing(gym.Env, EzPickle):
             allow_reverse=0,
             min_step_reward=-np.inf,
             max_step_reward=+np.inf,
-            animate_zoom=True,
+            animate_zoom=False,
             reward_fn=default_reward_callback,
             key_press_fn=None,
             key_release_fn=None,
