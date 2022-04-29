@@ -411,7 +411,7 @@ class CarRacing(gym.Env, EzPickle):
             max_single_lane=0,
             max_time_out=2.0,
             grayscale=1,
-            show_info_panel=1,
+            show_info_panel=0,
             frames_per_state=4,
             discretize_actions='hard',
             allow_reverse=0,
@@ -558,10 +558,12 @@ class CarRacing(gym.Env, EzPickle):
         # Next line forgets the obstacles touched but not currently being touch
         self.obstacle_contacts['visited'][(different_count) & (zero_count)] = False
         self.obstacle_contacts['count_delay'] = self.obstacle_contacts['count']
-
+    sum_obc_touch=0
     def check_obstacles_touched(self,obstacle_value=OBSTACLE_VALUE):
         obs_not_visited = self.obstacle_contacts['visited'] == False
         obs_count = (self.obstacle_contacts[obs_not_visited]['count_delay'] > 0).sum()
+        sum_obc_touch += obs_count
+        print("obs_count {}".format(sum_obc_touch))
         obstacle_rwd = 0
         if obs_count > 0:
             obstacle_rwd = obstacle_value
@@ -2175,10 +2177,11 @@ class CarRacing(gym.Env, EzPickle):
         self.full_score_label.text = "Full Score: %04i" % self.full_reward
         self.speed_label.text = "Speed: %0.2f" % np.linalg.norm(self.car.hull.linearVelocity)
         self.angle_label.text = "Angle: %0.2f" % self.car.wheels[0].joint.angle
-        self.score_label.draw()
-        self.full_score_label.draw()
-        self.speed_label.draw()
-        self.angle_label.draw()
+        print()
+        #self.score_label.draw()
+        #self.full_score_label.draw()
+        #self.speed_label.draw()
+        #self.angle_label.draw()
 
     def get_rnd_point_in_track(self,border=True):
         '''
