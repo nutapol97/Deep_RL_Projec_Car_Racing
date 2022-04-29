@@ -411,7 +411,7 @@ class CarRacing(gym.Env, EzPickle):
             max_single_lane=0,
             max_time_out=2.0,
             grayscale=1,
-            show_info_panel=0,
+            show_info_panel=1,
             frames_per_state=4,
             discretize_actions='hard',
             allow_reverse=0,
@@ -2429,7 +2429,7 @@ if __name__=="__main__":
     env = CarRacing(
             allow_reverse=False, 
             grayscale=1,
-            show_info_panel=0,
+            show_info_panel=1,
             discretize_actions="soft",
             num_tracks=1,
             num_lanes=1,
