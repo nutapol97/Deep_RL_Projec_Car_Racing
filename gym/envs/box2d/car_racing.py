@@ -402,7 +402,7 @@ class CarRacing(gym.Env, EzPickle):
         self._set_config(**kwargs)
         self._org_config = deepcopy(kwargs)
         self._steps_in_episode = 0
-
+        self.sum_obc_touch = 0
     def _set_config(self, 
             num_tracks=1, 
             num_lanes=1, 
@@ -427,6 +427,7 @@ class CarRacing(gym.Env, EzPickle):
             auto_render=False,
             allow_outside=True,
             load_tracks_from=None,
+
             ):
 
         self.allow_outside = allow_outside
@@ -562,12 +563,12 @@ class CarRacing(gym.Env, EzPickle):
     def check_obstacles_touched(self,obstacle_value=OBSTACLE_VALUE):
         obs_not_visited = self.obstacle_contacts['visited'] == False
         obs_count = (self.obstacle_contacts[obs_not_visited]['count_delay'] > 0).sum()
-        sum_obc_touch += obs_count
-        print("obs_count {}".format(sum_obc_touch))
+        self.sum_obc_touch += obs_count
+        print("obs_count {}".format(self.sum_obc_touch))
         obstacle_rwd = 0
         if obs_count > 0:
             obstacle_rwd = obstacle_value
-        return obstacle_rwd
+        return obstacle_rwdq9c
 
     def update_contact_with_track(self):
         self.last_touch_with_track = self.t
