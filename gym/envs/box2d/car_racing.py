@@ -183,8 +183,8 @@ def default_reward_callback(env):
     env.tile_visited_count += (left | right).sum()
 
     # Negative reward
-    reward += env.check_obstacles_touched()
-
+    reward , sum_obc_touch += env.check_obstacles_touched()
+    print(sum_obc_touch)
     full_reward = reward
     reward = np.clip(reward, 
                     env.min_step_reward, 
@@ -567,12 +567,12 @@ class CarRacing(gym.Env, EzPickle):
         self.sum_obc_touch += obs_count
 
 
-        clear_output()
-        print("obs_count {}".format(self.sum_obc_touch))
+
+        #print("obs_count {}".format(self.sum_obc_touch))
         obstacle_rwd = 0
         if obs_count > 0:
             obstacle_rwd = obstacle_value
-        return obstacle_rwd
+        return obstacle_rwd , self.sum_obc_touch
 
     def update_contact_with_track(self):
         self.last_touch_with_track = self.t
@@ -1722,7 +1722,7 @@ class CarRacing(gym.Env, EzPickle):
 
         if self.auto_render:
             self.render()
-
+            
         return self.state, step_reward, done, {}
 
     def _render_additional_objects(self):
