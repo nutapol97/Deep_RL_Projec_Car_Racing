@@ -183,8 +183,9 @@ def default_reward_callback(env):
     env.tile_visited_count += (left | right).sum()
 
     # Negative reward
-    reward , sum_obc_touch += env.check_obstacles_touched()
-    print(sum_obc_touch)
+    re_p,sum_obc_touch = env.check_obstacles_touched()
+    reward += re_p
+    #print(sum_obc_touch)
     full_reward = reward
     reward = np.clip(reward, 
                     env.min_step_reward, 
