@@ -20,6 +20,7 @@ from gym.utils import colorize, seeding, EzPickle
 import pyglet
 from pyglet import gl
 
+from IPython.display import clear_output
 # Easiest continuous control task to learn from pixels, a top-down racing environment.
 # Discreet control is reasonable in this environment as well, on/off discretisation is
 # fine.
@@ -564,6 +565,9 @@ class CarRacing(gym.Env, EzPickle):
         obs_not_visited = self.obstacle_contacts['visited'] == False
         obs_count = (self.obstacle_contacts[obs_not_visited]['count_delay'] > 0).sum()
         self.sum_obc_touch += obs_count
+
+
+        clear_output()
         print("obs_count {}".format(self.sum_obc_touch))
         obstacle_rwd = 0
         if obs_count > 0:
