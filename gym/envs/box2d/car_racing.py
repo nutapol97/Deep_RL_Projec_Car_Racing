@@ -568,7 +568,7 @@ class CarRacing(gym.Env, EzPickle):
         obstacle_rwd = 0
         if obs_count > 0:
             obstacle_rwd = obstacle_value
-        return obstacle_rwdq9c
+        return obstacle_rwd
 
     def update_contact_with_track(self):
         self.last_touch_with_track = self.t
