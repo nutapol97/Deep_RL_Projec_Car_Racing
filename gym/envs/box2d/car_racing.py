@@ -212,7 +212,7 @@ def default_reward_callback(env):
             done = True
             reward -= HARD_NEG_REWARD
 
-    return reward, full_reward, done
+    return reward, full_reward, done ,sum_obc_touch
 
 class FrictionDetector(contactListener):
     def __init__(self, env):
@@ -1713,7 +1713,7 @@ class CarRacing(gym.Env, EzPickle):
         full_step_reward = 0
         done = False
         if action is not None:
-            step_reward,full_step_reward,done = self.reward_fn(self)
+            step_reward,full_step_reward,done,sum_obc = self.reward_fn(self)
         
         self.car.fuel_spent = 0.0
 
@@ -1722,8 +1722,8 @@ class CarRacing(gym.Env, EzPickle):
 
         if self.auto_render:
             self.render()
-            
-        return self.state, step_reward, done, {}
+
+        return self.state, step_reward, done,sum_obc, {}
 
     def _render_additional_objects(self):
         """
