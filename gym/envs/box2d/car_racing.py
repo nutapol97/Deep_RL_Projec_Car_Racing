@@ -1723,8 +1723,8 @@ class CarRacing(gym.Env, EzPickle):
 
         if self.auto_render:
             self.render()
-
-        return self.state, step_reward, done,sum_obc, {}
+        print(sum_obc)
+        return self.state, step_reward, done, {}
 
     def _render_additional_objects(self):
         """
