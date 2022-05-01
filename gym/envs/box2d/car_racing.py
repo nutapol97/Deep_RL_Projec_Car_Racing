@@ -185,7 +185,7 @@ def default_reward_callback(env):
     # Negative reward
     re_p,sum_obc_touch = env.check_obstacles_touched()
     reward += re_p
-    #print(sum_obc_touch)
+    print(sum_obc_touch)
     full_reward = reward
     reward = np.clip(reward, 
                     env.min_step_reward, 
@@ -2183,7 +2183,7 @@ class CarRacing(gym.Env, EzPickle):
         #self.full_score_label.text = "Full Score: %04i" % self.full_reward
         #self.speed_label.text = "Speed: %0.2f" % np.linalg.norm(self.car.hull.linearVelocity)
         #self.angle_label.text = "Angle: %0.2f" % self.car.wheels[0].joint.angle
-        print("Obstacle count = {0}".format(self.sum_obc))
+
         print("Score : {}".format(self.reward))
         print("Full_reward : {}".format(self.full_reward))
         print("Speed : {}".format(np.linalg.norm(self.car.hull.linearVelocity)))
