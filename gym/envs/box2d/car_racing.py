@@ -161,7 +161,7 @@ def original_reward_callback(env):
 
 def default_reward_callback(env):
     reward = -SOFT_NEG_REWARD
-
+    sum_obc_touch = 0
     left  = env.info['count_left_delay']  > 0
     right = env.info['count_right_delay'] > 0
     track0 = env.info['track'] == 0
@@ -1723,7 +1723,8 @@ class CarRacing(gym.Env, EzPickle):
 
         if self.auto_render:
             self.render()
-        print(sum_obc)
+        print("obstacle count = {0}".format(sum_obc))
+        print("step_reward = {0}".format(step_reward))
         return self.state, step_reward, done, {}
 
     def _render_additional_objects(self):
