@@ -203,8 +203,8 @@ def default_reward_callback(env):
         # if too good or too bad
         done = True
     else:
-        if not env.allow_outside:
-            reward,done = env.check_outside(reward,done)
+        #if not env.allow_outside:
+        reward,done = env.check_outside(reward,done)
         reward,done = env.check_timeout(reward,done)
         reward,done = env.check_unvisited_tiles(reward,done)
 
