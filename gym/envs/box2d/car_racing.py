@@ -64,7 +64,7 @@ ZOOM_FOLLOW = True       # Set to False for fixed view (don't use zoom)
 
 TRACK_DETAIL_STEP = 21/SCALE
 TRACK_TURN_RATE = 0.31
-TRACK_WIDTH = 40/SCALE
+TRACK_WIDTH = 1000/SCALE
 BORDER = 8/SCALE
 BORDER_MIN_COUNT = 4
 NUM_TILES_FOR_AVG = 5 # The number of tiles before and after to takeinto account for angle
