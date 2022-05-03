@@ -57,7 +57,8 @@ WINDOW_W = int(WINDOW_H*1.5)
 
 SCALE       = 6.0        # Track scale
 TRACK_RAD   = 900/SCALE  # Track is heavily morphed circle with this radius
-PLAYFIELD   = 52/SCALE # Game over boundary
+PLAYFIELD   = 2000/SCALE # Game over boundary
+TRACK_30   =   52/SCALE
 FPS         = 50
 ZOOM        = 2.7        # Camera zoom, 0.25 to take screenshots, default 2.7
 ZOOM_FOLLOW = True       # Set to False for fixed view (don't use zoom)
@@ -140,6 +141,18 @@ def original_reward_callback(env):
     if not done and abs(x) > PLAYFIELD or abs(y) > PLAYFIELD:
         done = True
         reward -= HARD_NEG_REWARD
+
+
+
+
+    if not done and abs(x) > TRACK_30 or abs(y) > TRACK_30:
+        done = True
+        reward -= HARD_NEG_REWARD
+
+
+
+
+
 
     if env.reward > 1000 or env.reward < -1000:
         # if too good or too bad
