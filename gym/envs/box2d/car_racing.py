@@ -552,10 +552,10 @@ class CarRacing(gym.Env, EzPickle):
         right = self.info['count_right']
         left = self.info['count_left']
         print('right  : {0} \n left : {1}'.format(right.sum(), left.sum()))
-        if self._is_outside():
+        #if self._is_outside():
             # In case it is outside the track 
-            done = True
-            reward -= HARD_NEG_REWARD
+         #   done = True
+          #  reward -= HARD_NEG_REWARD
         return reward,done
         
     def _update_obstacles_info(self):
