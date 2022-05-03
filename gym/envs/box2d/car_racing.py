@@ -192,8 +192,9 @@ def default_reward_callback(env):
     re_p,sum_obc_touch = env.check_obstacles_touched()
     reward += re_p
 
-    if env.tile_visited_count == len(env.track) or env.new_lap:
+    if env.tile_visited_count == len(env.track):
         lap_count +=1
+        reward += 100
         done = True
     lap_complete_percent = env.tile_visited_count / len(env.track)
     print("lap_complete_percent : {}".format(lap_complete_percent))
@@ -560,7 +561,7 @@ class CarRacing(gym.Env, EzPickle):
     def _is_outside(self):
         right = self.info['count_right'] > 0
         left  = self.info['count_left']  > 0
-        print('right  : {0} \n left : {1}'.format(right.sum(), left.sum()))
+        #print('right  : {0} \n left : {1}'.format(right.sum(), left.sum()))
         if (left|right).sum() == 0:
 
             return True
@@ -571,10 +572,10 @@ class CarRacing(gym.Env, EzPickle):
         right = self.info['count_right']
         left = self.info['count_left']
         #print('right  : {0} \n left : {1}'.format(right.sum(), left.sum()))
-        #if self._is_outside():
+        if self._is_outside():
             # In case it is outside the track 
          #   done = True
-          #  reward -= HARD_NEG_REWARD
+            reward -=1
         return reward,done
         
     def _update_obstacles_info(self):
