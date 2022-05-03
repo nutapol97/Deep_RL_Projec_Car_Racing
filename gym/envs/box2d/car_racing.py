@@ -541,7 +541,7 @@ class CarRacing(gym.Env, EzPickle):
     def _is_outside(self):
         right = self.info['count_right'] > 0
         left  = self.info['count_left']  > 0
-        print('right  : {0} \n left : {1}'.format(right, left))
+        print('right  : {0} \n left : {1}'.format(right.sum(), left.sum()))
         if (left|right).sum() == 0:
 
             return True
@@ -551,7 +551,7 @@ class CarRacing(gym.Env, EzPickle):
     def check_outside(self,reward,done):
         right = self.info['count_right']
         left = self.info['count_left']
-        print('right  : {0} \n left : {1}'.format(right, left))
+        print('right  : {0} \n left : {1}'.format(right.sum(), left.sum()))
         if self._is_outside():
             # In case it is outside the track 
             done = True
