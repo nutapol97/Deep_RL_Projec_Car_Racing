@@ -203,7 +203,8 @@ def default_reward_callback(env):
         # if too good or too bad
         done = True
     else:
-        if not env.allow_outside: reward,done = env.check_outside(reward,done)
+        if not env.allow_outside:
+            reward,done = env.check_outside(reward,done)
         reward,done = env.check_timeout(reward,done)
         reward,done = env.check_unvisited_tiles(reward,done)
 
@@ -538,15 +539,17 @@ class CarRacing(gym.Env, EzPickle):
         return reward,done
 
     def _is_outside(self):
-        right = self.info['count_right'] > 0.3
-        left  = self.info['count_left']  > 0.3
-
+        right = self.info['count_right'] > 0
+        left  = self.info['count_left']  > 0
+        print('right  : {0} \n left : {1}'.format(right, left))
         if (left|right).sum() == 0:
+
             return True
         else:
             return False
 
     def check_outside(self,reward,done):
+        print('right  : {0} \n left : {1}'.format(right, left))
         if self._is_outside():
             # In case it is outside the track 
             done = True
