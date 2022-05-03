@@ -144,16 +144,6 @@ def original_reward_callback(env):
 
 
 
-
-    if not done and abs(x) > TRACK_30 or abs(y) > TRACK_30:
-        done = True
-        reward -= HARD_NEG_REWARD
-
-
-
-
-
-
     if env.reward > 1000 or env.reward < -1000:
         # if too good or too bad
         done = True
@@ -189,7 +179,8 @@ def default_reward_callback(env):
     elif (left & right & track0).sum() > 0 and (((left | right) & track1).sum() == 0) :
         factor = 3
     else:
-        factor = 1 
+        factor = 1
+
 
     # Positive reward
     reward += (( (left | right) & not_visited).sum() / factor)
@@ -198,6 +189,7 @@ def default_reward_callback(env):
     # Negative reward
     re_p,sum_obc_touch = env.check_obstacles_touched()
     reward += re_p
+
     print("obstacle_touch : {}".format(sum_obc_touch))
     full_reward = reward
     reward = np.clip(reward, 
@@ -215,6 +207,9 @@ def default_reward_callback(env):
     if env.reward > 1000 or env.reward < -200:
         # if too good or too bad
         done = True
+    if not done and abs(x) > TRACK_30 or abs(y) > TRACK_30:
+        done = True
+        reward -= HARD_NEG_REWARD
     else:
         #if not env.allow_outside:
         reward,done = env.check_outside(reward,done)
@@ -1734,7 +1729,7 @@ class CarRacing(gym.Env, EzPickle):
         done = False
         if action is not None:
             step_reward,full_step_reward,done,sum_obc = self.reward_fn(self)
-        
+
         self.car.fuel_spent = 0.0
 
         self.reward += step_reward
