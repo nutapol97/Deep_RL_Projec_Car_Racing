@@ -165,12 +165,13 @@ def original_reward_callback(env):
 def default_reward_callback(env):
     reward = -SOFT_NEG_REWARD
     sum_obc_touch = 0
+    lap_count = 0
     left  = env.info['count_left_delay']  > 0
     right = env.info['count_right_delay'] > 0
     track0 = env.info['track'] == 0
     track1 = env.info['track'] == 1
     not_visited = env.info['visited'] == False
-
+    x, y = env.car.hull.position
     # To allow changes of lane in intersections without lossing points
     if (left & right & track0).sum() > 0 and (left & right & track1).sum() > 0:
         factor = 3
@@ -187,9 +188,16 @@ def default_reward_callback(env):
     env.tile_visited_count += (left | right).sum()
 
     # Negative reward
+
     re_p,sum_obc_touch = env.check_obstacles_touched()
     reward += re_p
 
+    if env.tile_visited_count == len(env.track) or env.new_lap:
+        lap_count +=1
+        done = True
+    lap_complete_percent = env.tile_visited_count / len(env.track)
+    print("lap_complete_percent : {}".format(lap_complete_percent))
+    print("lap done count {}".format(lap_count))
     print("obstacle_touch : {}".format(sum_obc_touch))
     full_reward = reward
     reward = np.clip(reward, 
@@ -414,6 +422,8 @@ class CarRacing(gym.Env, EzPickle):
         self._org_config = deepcopy(kwargs)
         self._steps_in_episode = 0
         self.sum_obc_touch = 0
+        self.lap_count = 0
+
     def _set_config(self, 
             num_tracks=1, 
             num_lanes=1, 
@@ -441,6 +451,7 @@ class CarRacing(gym.Env, EzPickle):
 
             ):
         self.sum_obc_touch = 0
+        self.lap_count = 0
         self.allow_outside = allow_outside
         self.auto_render = auto_render
         self.reward_fn = reward_fn
