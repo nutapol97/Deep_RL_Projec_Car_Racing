@@ -216,9 +216,9 @@ def default_reward_callback(env):
     if env.reward > 1000 or env.reward < -200:
         # if too good or too bad
         done = True
-    if not done and abs(x) > TRACK_30 or abs(y) > TRACK_30:
-        done = True
-        reward -= HARD_NEG_REWARD
+    #if not done and abs(x) > TRACK_30 or abs(y) > TRACK_30:
+     #   done = True
+    #    reward -= HARD_NEG_REWARD
     else:
         #if not env.allow_outside:
         reward,done = env.check_outside(reward,done)
