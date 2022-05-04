@@ -1741,7 +1741,7 @@ class CarRacing(gym.Env, EzPickle):
         done = False
         if action is not None:
             step_reward,full_step_reward,done,sum_obc = self.reward_fn(self)
-            print("Track : {}".format(self.track))
+            print("Track : {}".format(self.track.shape()))
         self.car.fuel_spent = 0.0
 
         self.reward += step_reward
