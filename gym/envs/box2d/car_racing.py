@@ -166,6 +166,7 @@ def default_reward_callback(env):
     reward = -SOFT_NEG_REWARD
     sum_obc_touch = 0
     lap_count = 0
+    count_out = 0
     left  = env.info['count_left_delay']  > 0
     right = env.info['count_right_delay'] > 0
     track0 = env.info['track'] == 0
@@ -230,7 +231,8 @@ def default_reward_callback(env):
     #    reward -= HARD_NEG_REWARD
     else:
         #if not env.allow_outside:
-        reward,done = env.check_outside(reward,done)
+
+        reward,done,count_out = env.check_outside(reward,done,count_out)
         reward,done = env.check_timeout(reward,done)
         reward,done = env.check_unvisited_tiles(reward,done)
 
@@ -239,7 +241,7 @@ def default_reward_callback(env):
 
         #x1=  env._get_position_inside_lane(int(x), x_pos=1, border=True, direction=1, discrete=False)
         #x2 = env._get_position_inside_lane(int(x), x_pos=1, border=True, direction=-1, discrete=False)
-        #print("x1 : {}".format(x1[2]))
+        print("count_out : {}".format(count_out))
         #print("x2 : {}".format(x2[2]))
         #print("x : {}".format(x))
         if not done and abs(x) > PLAYFIELD or abs(y) > PLAYFIELD:
@@ -438,6 +440,7 @@ class CarRacing(gym.Env, EzPickle):
         self._org_config = deepcopy(kwargs)
         self._steps_in_episode = 0
         self.sum_obc_touch = 0
+        self.count_out = 0
         self.lap_count = 0
 
     def _set_config(self, 
@@ -583,15 +586,16 @@ class CarRacing(gym.Env, EzPickle):
         else:
             return False
 
-    def check_outside(self,reward,done):
+    def check_outside(self,reward,done,count_out):
         right = self.info['count_right']
         left = self.info['count_left']
         #print('right  : {0} \n left : {1}'.format(right.sum(), left.sum()))
         if self._is_outside():
             # In case it is outside the track 
          #   done = True
+            count_out +=1
             reward -=1
-        return reward,done
+        return reward,done,count_out
         
     def _update_obstacles_info(self):
         different_count = self.obstacle_contacts['count'] != self.obstacle_contacts['count_delay']
