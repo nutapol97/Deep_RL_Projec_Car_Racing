@@ -237,11 +237,11 @@ def default_reward_callback(env):
         # if outside the map
         x, y = env.car.hull.position
 
-        x1=  env._get_position_inside_lane(int(x), x_pos=1, border=True, direction=1, discrete=False)
-        x2 = env._get_position_inside_lane(int(x), x_pos=1, border=True, direction=-1, discrete=False)
-        print("x1 : {}".format(x1[2]))
-        print("x2 : {}".format(x2[2]))
-        print("x : {}".format(x))
+        #x1=  env._get_position_inside_lane(int(x), x_pos=1, border=True, direction=1, discrete=False)
+        #x2 = env._get_position_inside_lane(int(x), x_pos=1, border=True, direction=-1, discrete=False)
+        #print("x1 : {}".format(x1[2]))
+        #print("x2 : {}".format(x2[2]))
+        #print("x : {}".format(x))
         if not done and abs(x) > PLAYFIELD or abs(y) > PLAYFIELD:
             done = True
             reward -= HARD_NEG_REWARD
@@ -1111,7 +1111,7 @@ class CarRacing(gym.Env, EzPickle):
                 p4 = (x - width*math.cos(beta) - TRACK_DETAIL_STEP/2*math.sin(beta),
                       y - width*math.sin(beta) + TRACK_DETAIL_STEP/2*math.cos(beta))
             else:
-                width = TRACK_WIDTH/2
+                width = TRACK_WIDTH/6
 
                 p1 = (x + TRACK_DETAIL_STEP/2*math.sin(beta),
                       y - TRACK_DETAIL_STEP/2*math.cos(beta))
