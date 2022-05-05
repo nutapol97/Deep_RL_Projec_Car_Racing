@@ -198,7 +198,7 @@ def default_reward_callback(env):
         reward += 100
         done = True
     lap_complete_percent = env.tile_visited_count / len(env.track)
-    get_rnd_point_in_track()
+    env.get_rnd_point_in_track()
     print("lap_complete_percent : {}".format(lap_complete_percent))
     print("lap done count {}".format(lap_count))
     print("obstacle_touch : {}".format(sum_obc_touch))
