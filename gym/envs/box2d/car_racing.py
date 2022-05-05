@@ -200,6 +200,7 @@ def default_reward_callback(env):
     lap_complete_percent = env.tile_visited_count / len(env.track)
     idx = env.np_random.randint(0, len(env.track))
     from_val, to_val=env._get_extremes_of_position(idx,border=True)
+
     print("from_val : {}".format(from_val))
     print("to_val : {}".format(to_val))
     print("lap_complete_percent : {}".format(lap_complete_percent))
@@ -232,6 +233,8 @@ def default_reward_callback(env):
 
         # if outside the map
         x, y = env.car.hull.position
+        print("x : {}".format(x))
+        print("y : {}".format(y))
         if not done and abs(x) > PLAYFIELD or abs(y) > PLAYFIELD:
             done = True
             reward -= HARD_NEG_REWARD
