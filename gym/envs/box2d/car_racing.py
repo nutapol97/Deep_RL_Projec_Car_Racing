@@ -199,6 +199,7 @@ def default_reward_callback(env):
         reward += 100
         done = True
     lap_complete_percent = env.tile_visited_count / len(env.track)
+
     idx = env.np_random.randint(0, len(env.track))
 
     #from_val, to_val=env._get_extremes_of_position(idx,border=True)
@@ -568,7 +569,7 @@ class CarRacing(gym.Env, EzPickle):
         return reward,done
 
     def check_timeout(self,reward,done):
-        if self._steps_in_episode  >= 9000:
+        if self._steps_in_episode  >= 67500:
             # if too many seconds outside the track
             done = True
             if self.verbose > 0:
