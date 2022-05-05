@@ -228,7 +228,7 @@ def default_reward_callback(env):
 
         # if outside the map
         x, y = env.car.hull.position
-        if not done and abs(x) >   or abs(y) > PLAYFIELD:
+        if not done and abs(x) > PLAYFIELD or abs(y) > PLAYFIELD:
             done = True
             reward -= HARD_NEG_REWARD
 
