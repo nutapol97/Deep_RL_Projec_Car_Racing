@@ -237,8 +237,8 @@ def default_reward_callback(env):
         # if outside the map
         x, y = env.car.hull.position
 
-        x1=env._get_position_inside_lane(1, x_pos=1, border=True, direction=1, discrete=False)
-        x2 = env._get_position_inside_lane(-1, x_pos=1, border=True, direction=1, discrete=False)
+        x1=  env._get_position_inside_lane(1, x_pos=1, border=True, direction=1, discrete=False)
+        x2 = env._get_position_inside_lane(1, x_pos=1, border=True, direction=-1, discrete=False)
         print("x1 : {}".format(x1[2]))
         print("x2 : {}".format(x2[2]))
         print("x : {}".format(x))
