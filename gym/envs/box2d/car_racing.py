@@ -228,24 +228,24 @@ def default_reward_callback(env):
     #if not done and abs(x) > TRACK_30 or abs(y) > TRACK_30:
      #   done = True
     #    reward -= HARD_NEG_REWARD
-    else:
+
         #if not env.allow_outside:
 
-        reward,done,count_out = env.check_outside(reward,done,count_out)
-        reward,done = env.check_timeout(reward,done)
-        reward,done = env.check_unvisited_tiles(reward,done)
+    reward,done,count_out = env.check_outside(reward,done,count_out)
+    reward,done = env.check_timeout(reward,done)
+    reward,done = env.check_unvisited_tiles(reward,done)
 
-        # if outside the map
-        x, y = env.car.hull.position
+    # if outside the map
+    x, y = env.car.hull.position
 
-        #x1=  env._get_position_inside_lane(int(x), x_pos=1, border=True, direction=1, discrete=False)
-        #x2 = env._get_position_inside_lane(int(x), x_pos=1, border=True, direction=-1, discrete=False)
-        print("count_out : {}".format(count_out))
-        #print("x2 : {}".format(x2[2]))
-        #print("x : {}".format(x))
-        if not done and abs(x) > PLAYFIELD or abs(y) > PLAYFIELD:
-            done = True
-            reward -= HARD_NEG_REWARD
+    #x1=  env._get_position_inside_lane(int(x), x_pos=1, border=True, direction=1, discrete=False)
+    #x2 = env._get_position_inside_lane(int(x), x_pos=1, border=True, direction=-1, discrete=False)
+    print("count_out : {}".format(count_out))
+    #print("x2 : {}".format(x2[2]))
+    #print("x : {}".format(x))
+    if not done and abs(x) > PLAYFIELD or abs(y) > PLAYFIELD:
+        done = True
+        reward -= HARD_NEG_REWARD
 
     return reward, full_reward, done ,sum_obc_touch
 
