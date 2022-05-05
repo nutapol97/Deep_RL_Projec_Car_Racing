@@ -239,7 +239,7 @@ def default_reward_callback(env):
         x1=env._get_position_inside_lane(1, x_pos=1, border=True, direction=1, discrete=False)
         print("x1 : {}".format(x1))
 
-        #print("y : {}".format(y))
+        print("x : {}".format(x))
         if not done and abs(x) > PLAYFIELD or abs(y) > PLAYFIELD:
             done = True
             reward -= HARD_NEG_REWARD
