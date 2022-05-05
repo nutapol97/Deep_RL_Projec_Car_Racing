@@ -77,7 +77,7 @@ MIN_SEGMENT_LENGHT = 8
 ROAD_COLOR = [0.4, 0.4, 0.4]
 
 OBSTACLE_NAME  = 'obstacle'
-OBSTACLE_VALUE = -10
+OBSTACLE_VALUE = -1
 TILE_NAME      = 'tile'
 BORDER_NAME    = 'border'
 GRASS_NAME     = 'grass'
@@ -199,10 +199,13 @@ def default_reward_callback(env):
         done = True
     lap_complete_percent = env.tile_visited_count / len(env.track)
     idx = env.np_random.randint(0, len(env.track))
-    from_val, to_val=env._get_extremes_of_position(idx,border=True)
 
-    print("from_val : {}".format(from_val))
-    print("to_val : {}".format(to_val))
+    #from_val, to_val=env._get_extremes_of_position(idx,border=True)
+    print("idx : {}".format(idx))
+    #print("from_val : {}".format(from_val))
+    #print("to_val : {}".format(to_val))
+
+
     print("lap_complete_percent : {}".format(lap_complete_percent))
     print("lap done count {}".format(lap_count))
     print("obstacle_touch : {}".format(sum_obc_touch))
@@ -233,6 +236,7 @@ def default_reward_callback(env):
 
         # if outside the map
         x, y = env.car.hull.position
+        x1=env._get_position_inside_lane(1, h=1, border=True, direction=1, discrete=False)
         print("x : {}".format(x))
         print("y : {}".format(y))
         if not done and abs(x) > PLAYFIELD or abs(y) > PLAYFIELD:
