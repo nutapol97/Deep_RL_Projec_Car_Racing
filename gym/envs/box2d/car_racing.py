@@ -59,7 +59,7 @@ SCALE       = 6.0        # Track scale
 TRACK_RAD   = 900/SCALE  # Track is heavily morphed circle with this radius
 PLAYFIELD   = 2000/SCALE # Game over boundary
 TRACK_30   =   92/SCALE
-FPS         = 30
+FPS         = 50
 ZOOM        = 2.7        # Camera zoom, 0.25 to take screenshots, default 2.7
 ZOOM_FOLLOW = True       # Set to False for fixed view (don't use zoom)
 
@@ -558,7 +558,7 @@ class CarRacing(gym.Env, EzPickle):
         return reward,done
 
     def check_timeout(self,reward,done):
-        if self._steps_in_episode  >= 5400:
+        if self._steps_in_episode  >= 9000:
             # if too many seconds outside the track
             done = True
             if self.verbose > 0:
