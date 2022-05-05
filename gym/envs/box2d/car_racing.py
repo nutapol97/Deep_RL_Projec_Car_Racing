@@ -197,7 +197,7 @@ def default_reward_callback(env):
     if env.tile_visited_count == len(env.track):
         lap_count +=1
         reward += 100
-        done = True
+        
     lap_complete_percent = env.tile_visited_count / len(env.track)
 
     idx = env.np_random.randint(0, len(env.track))
@@ -224,9 +224,7 @@ def default_reward_callback(env):
 
     done = False
 
-    if env.reward > 1000 or env.reward < -200:
-        # if too good or too bad
-        done = True
+
     #if not done and abs(x) > TRACK_30 or abs(y) > TRACK_30:
      #   done = True
     #    reward -= HARD_NEG_REWARD
@@ -565,6 +563,7 @@ class CarRacing(gym.Env, EzPickle):
 
     def check_unvisited_tiles(self,reward,done):
         if self.info['visited'].sum() / self.info.shape[0] > 0.5:
+            print('DONE check_unvisited_tiles')
             done = True
         return reward,done
 
