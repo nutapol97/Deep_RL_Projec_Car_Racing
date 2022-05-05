@@ -184,6 +184,7 @@ def default_reward_callback(env):
 
 
     # Positive reward
+
     reward += (( (left | right) & not_visited).sum() / factor)
     env.tile_visited_count += (left | right).sum()
 
@@ -227,7 +228,7 @@ def default_reward_callback(env):
 
         # if outside the map
         x, y = env.car.hull.position
-        if not done and abs(x) > PLAYFIELD or abs(y) > PLAYFIELD:
+        if not done and abs(x) >   or abs(y) > PLAYFIELD:
             done = True
             reward -= HARD_NEG_REWARD
 
@@ -631,7 +632,9 @@ class CarRacing(gym.Env, EzPickle):
         '''
         position = [beta,x,y]
         '''
-        if 'car' in locals() and self.car is not None: self.car.destroy()
+        if 'car' in locals() and self.car is not None:
+            self.car.destroy()
+
         self.car = Car(self.world, *position, allow_reverse=self.allow_reverse)
 
         # This a better way to do it but coordinates changes slightly, Dont know why 
@@ -1935,7 +1938,8 @@ class CarRacing(gym.Env, EzPickle):
 
             track1 = np.array(self.tracks[0])
             track2 = np.array(self.tracks[1])
-
+            print("track1 shape {}".format(track1.shape()))
+            print("track1 {}".fotmat(track1))
             points1 = track1[:,:,[2,3]]
             points2 = track2[:,:,[2,3]]
 
