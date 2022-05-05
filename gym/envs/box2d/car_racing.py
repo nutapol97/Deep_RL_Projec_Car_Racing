@@ -200,10 +200,10 @@ def default_reward_callback(env):
         
     lap_complete_percent = env.tile_visited_count / len(env.track)
 
-    idx = env.np_random.randint(0, len(env.track))
+
 
     #from_val, to_val=env._get_extremes_of_position(idx,border=True)
-    print("idx : {}".format(idx))
+
     #print("from_val : {}".format(from_val))
     #print("to_val : {}".format(to_val))
 
@@ -243,9 +243,9 @@ def default_reward_callback(env):
     print("count_out : {}".format(count_out))
     #print("x2 : {}".format(x2[2]))
     #print("x : {}".format(x))
-    if not done and abs(x) > PLAYFIELD or abs(y) > PLAYFIELD:
-        done = True
-        reward -= HARD_NEG_REWARD
+    #if not done and abs(x) > PLAYFIELD or abs(y) > PLAYFIELD:
+     #   done = True
+      #  reward -= HARD_NEG_REWARD
 
     return reward, full_reward, done ,sum_obc_touch
 
@@ -564,16 +564,16 @@ class CarRacing(gym.Env, EzPickle):
     def check_unvisited_tiles(self,reward,done):
         if self.info['visited'].sum() / self.info.shape[0] > 0.5:
             print('DONE check_unvisited_tiles')
-            done = True
+
         return reward,done
 
     def check_timeout(self,reward,done):
+        print("self._steps_in_episode : {} ".format(self._steps_in_episode))
         if self._steps_in_episode  >= 67500:
+
             # if too many seconds outside the track
             done = True
-            if self.verbose > 0:
-                print("done by time")
-            reward -= HARD_NEG_REWARD
+
         return reward,done
 
     def _is_outside(self):
