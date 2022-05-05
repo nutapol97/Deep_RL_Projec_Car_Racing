@@ -198,7 +198,8 @@ def default_reward_callback(env):
         reward += 100
         done = True
     lap_complete_percent = env.tile_visited_count / len(env.track)
-    from_val, to_val=env._get_extremes_of_position(idx,border)
+    idx = env.np_random.randint(0, len(env.track))
+    from_val, to_val=env._get_extremes_of_position(idx,border=True)
     print("from_val : {}".format(from_val))
     print("to_val : {}".format(to_val))
     print("lap_complete_percent : {}".format(lap_complete_percent))
@@ -2262,8 +2263,7 @@ class CarRacing(gym.Env, EzPickle):
             alpha+=np.pi
             beta+=np.pi
         from_val, to_val = self._get_extremes_of_position(idx,border)
-        print("from_val {}".format(from_val))
-        print("to_val {}".format(to_val))
+
         if discrete:
             # it is 1-border in becase -TRACK_WIDTH when border=True
             # makes h always equal to -3.3333 because it is taking
