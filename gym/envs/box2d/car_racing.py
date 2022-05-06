@@ -241,7 +241,7 @@ def default_reward_callback(env):
     #x1=  env._get_position_inside_lane(int(x), x_pos=1, border=True, direction=1, discrete=False)
     #x2 = env._get_position_inside_lane(int(x), x_pos=1, border=True, direction=-1, discrete=False)
     print("count_out : {}".format(count_out))
-    print("x : {}".format(x)
+    print("x : {}".format(x))
     print("y : {}".format(y))
     #if not done and abs(x) > PLAYFIELD or abs(y) > PLAYFIELD:
      #   done = True
