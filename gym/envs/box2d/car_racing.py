@@ -196,7 +196,7 @@ def default_reward_callback(env):
     print("tile_visited_count : {}".format(env.tile_visited_count))
     print("len(env.track) : {}".format(len(env.track)))
     count_lap_k = int(env.tile_visited_count / len(env.track))
-    if count_lap_k >= 1:
+    if env.tile_visited_count == len(env.track):
         lap_count +=1
         reward += 100
         env.tile_visited_count = 0
