@@ -6,7 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="8883207b-38e7-4835-a3c5-6d079bad1bcc" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gym/envs/box2d/car_racing.py" beforeDir="false" afterPath="$PROJECT_DIR$/gym/envs/box2d/car_racing.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -48,6 +48,7 @@
       <workItem from="1651330750507" duration="11758000" />
       <workItem from="1651565663511" duration="11477000" />
       <workItem from="1651634620800" duration="41759000" />
+      <workItem from="1651839698557" duration="2177000" />
     </task>
     <servers />
   </component>
@@ -64,5 +65,6 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
 </project>
