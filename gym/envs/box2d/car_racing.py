@@ -172,7 +172,7 @@ def default_reward_callback(env):
     track0 = env.info['track'] == 0
     track1 = env.info['track'] == 1
     not_visited = env.info['visited'] == False
-    x, y = env.car.hull.position
+
     # To allow changes of lane in intersections without lossing points
     if (left & right & track0).sum() > 0 and (left & right & track1).sum() > 0:
         factor = 3
@@ -193,7 +193,7 @@ def default_reward_callback(env):
 
     re_p,sum_obc_touch = env.check_obstacles_touched()
     reward += re_p
-
+    print()
     if env.tile_visited_count == len(env.track):
         lap_count +=1
         reward += 100
@@ -241,8 +241,8 @@ def default_reward_callback(env):
     #x1=  env._get_position_inside_lane(int(x), x_pos=1, border=True, direction=1, discrete=False)
     #x2 = env._get_position_inside_lane(int(x), x_pos=1, border=True, direction=-1, discrete=False)
     print("count_out : {}".format(count_out))
-    #print("x2 : {}".format(x2[2]))
-    #print("x : {}".format(x))
+    print("x : {}".format(x)
+    print("y : {}".format(y))
     #if not done and abs(x) > PLAYFIELD or abs(y) > PLAYFIELD:
      #   done = True
       #  reward -= HARD_NEG_REWARD
