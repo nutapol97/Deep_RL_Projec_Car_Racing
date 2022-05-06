@@ -193,7 +193,8 @@ def default_reward_callback(env):
 
     re_p,sum_obc_touch = env.check_obstacles_touched()
     reward += re_p
-    print(env.tile_visited_count)
+    print("tile_visited_count : {}".foramat(env.tile_visited_count))
+    print("env.track : {}".foramat(env.track))
     if env.tile_visited_count == len(env.track):
         lap_count +=1
         reward += 100
@@ -1762,7 +1763,7 @@ class CarRacing(gym.Env, EzPickle):
         done = False
         if action is not None:
             step_reward,full_step_reward,done,sum_obc = self.reward_fn(self)
-            print("Track : {}".format(len(self.track)))
+            #print("Track : {}".format(len(self.track)))
         self.car.fuel_spent = 0.0
 
         self.reward += step_reward
