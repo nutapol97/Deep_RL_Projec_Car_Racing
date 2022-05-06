@@ -193,7 +193,7 @@ def default_reward_callback(env):
 
     re_p,sum_obc_touch = env.check_obstacles_touched()
     reward += re_p
-    print()
+    print(env.tile_visited_count)
     if env.tile_visited_count == len(env.track):
         lap_count +=1
         reward += 100
