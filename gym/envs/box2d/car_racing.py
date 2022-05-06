@@ -144,9 +144,9 @@ def original_reward_callback(env):
 
 
 
-    if env.reward > 1000 or env.reward < -1000:
+    #if env.reward > 1000 or env.reward < -1000:
         # if too good or too bad
-        done = True
+     #   done = True
     else:
         if not env.allow_outside: reward,done = env.check_outside(reward,done)
         reward,done = env.check_timeout(reward,done)
@@ -241,8 +241,8 @@ def default_reward_callback(env):
     #x1=  env._get_position_inside_lane(int(x), x_pos=1, border=True, direction=1, discrete=False)
     #x2 = env._get_position_inside_lane(int(x), x_pos=1, border=True, direction=-1, discrete=False)
     print("count_out : {}".format(count_out))
-    print("x : {}".format(x))
-    print("y : {}".format(y))
+    #print("x : {}".format(x))
+    #print("y : {}".format(y))
     #if not done and abs(x) > PLAYFIELD or abs(y) > PLAYFIELD:
      #   done = True
       #  reward -= HARD_NEG_REWARD
