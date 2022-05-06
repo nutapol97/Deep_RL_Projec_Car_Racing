@@ -195,11 +195,11 @@ def default_reward_callback(env):
     reward += re_p
     print("tile_visited_count : {}".format(env.tile_visited_count))
     print("len(env.track) : {}".format(len(env.track)))
-    count_lap_k = env.tile_visited_count % len(env.track)
-    if count_lap_k == 0:
+    count_lap_k = int(env.tile_visited_count / len(env.track))
+    if count_lap_k >= 1:
         lap_count +=1
         reward += 100
-        
+        env.tile_visited_count = 0
     lap_complete_percent = env.tile_visited_count / len(env.track)
 
 
