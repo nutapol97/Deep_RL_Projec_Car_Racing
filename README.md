@@ -4,8 +4,7 @@ Presentation : https://docs.google.com/presentation/d/10UAJBjj2w473teJY-cLwJKwF3
 Stimulated envioronment by using CarRacing[^1] 
 
 
-# 
-[^1]: Car Racing v1 Update 
+# [^1]: Car Racing v1 Update 
 
 This repository for Deep reinforcement learning subject.
 
