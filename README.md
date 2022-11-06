@@ -1,6 +1,6 @@
 # Applying of Reinforcement Learning for Self-Driving Cars
 Stimulated self-driving cars under the policy of Proximal Policy Optimization by using the CarRacing environment.
-Presentation : https://docs.google.com/presentation/d/10UAJBjj2w473teJY-cLwJKwF3cAmobX-QoBa_NMHl74/edit?usp=sharing
+[Presentation](https://docs.google.com/presentation/d/10UAJBjj2w473teJY-cLwJKwF3cAmobX-QoBa_NMHl74/edit?usp=sharing)
 # Car Racing v1 Update 
 gym Car_Racing v1 env custom from [notanymike](https://notanymike.github.io/Solving-CarRacing/) 
 for work with gym-0.23.1 and stable_baselines3
