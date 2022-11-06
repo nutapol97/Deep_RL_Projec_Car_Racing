@@ -1,8 +1,6 @@
 # Applying of Reinforcement Learning for Self-Driving Cars
-Presentation : https://docs.google.com/presentation/d/10UAJBjj2w473teJY-cLwJKwF3cAmobX-QoBa_NMHl74/edit?usp=sharing
-
 Stimulated self-driving cars under the policy of Proximal Policy Optimization by using the CarRacing environment.
-
+Presentation : https://docs.google.com/presentation/d/10UAJBjj2w473teJY-cLwJKwF3cAmobX-QoBa_NMHl74/edit?usp=sharing
 # Car Racing v1 Update 
 
 This repository for Deep reinforcement learning subject.
