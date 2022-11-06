@@ -1,16 +1,13 @@
 # Applying of Reinforcement Learning for Self-Driving Cars
 Presentation : https://docs.google.com/presentation/d/10UAJBjj2w473teJY-cLwJKwF3cAmobX-QoBa_NMHl74/edit?usp=sharing
 
-Stimulated envioronment by using CarRacing
-This site was built using [GitHub Pages](https://notanymike.github.io/Solving-CarRacing/).
-
-
+Stimulated self-driving cars under the policy of Proximal Policy Optimization by using the CarRacing environment.
 
 # Car Racing v1 Update 
 
 This repository for Deep reinforcement learning subject.
 
-gym Car_Racing v1 env custom from https://notanymike.github.io/Solving-CarRacing/ 
+gym Car_Racing v1 env custom from [notanymike](https://notanymike.github.io/Solving-CarRacing/) 
 for work with gym-0.23.1 and stable_baselines3
 
 # Installation on Google colab
