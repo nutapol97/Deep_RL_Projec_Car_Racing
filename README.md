@@ -1,4 +1,10 @@
-# Car Racing v1 Update 
+# Applying of Reinforcement Learning for Self-Driving Cars
+Presentation : https://docs.google.com/presentation/d/10UAJBjj2w473teJY-cLwJKwF3cAmobX-QoBa_NMHl74/edit?usp=sharing
+
+Stimulated envioronment by using CarRacing[^1] 
+
+
+# [^1]Car Racing v1 Update 
 
 This repository for Deep reinforcement learning subject.
 
